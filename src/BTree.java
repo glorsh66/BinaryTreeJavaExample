@@ -2,6 +2,7 @@ import jdk.nashorn.api.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.stream.Stream;
 
 public class BTree {
     public Node root;
@@ -211,6 +212,41 @@ public class BTree {
             traversePostOrder(n.right);
             this.results.add(n.i);
             this.stepCounter++;
+        }
+    }
+
+
+
+    public void printTreePostOrder(Node n, int indentation ) {
+        if (n!=null)
+        {
+                StringBuilder str = new StringBuilder(indentation+1);
+                Stream.generate(() -> ' ').limit(indentation+1).forEach(str::append);
+                System.out.print(str.toString());
+                System.out.println(n.i);
+
+            if (n.left!=null) printTreePostOrder(n.left,indentation+4);
+            if (n.right!=null) printTreePostOrder(n.right,indentation-4);
+        }
+    }
+
+    public void myPrint(Node n, int level, int pos, String[][] num)
+    {
+        if (n!=null) {
+            System.out.println(n.i + " level: " + level + " pos: " + pos + " max elems " + Math.pow(2, level));
+
+            //Пишем в массив.
+            num[level][pos] = Integer.toString(n.i);
+
+            //Делаем стрелочки
+
+            if (n.left != null) num[level+1][pos-1] = "/";
+            if (n.right != null) num[level+1][pos+1] = "\\";
+
+
+
+            if (n.left != null) myPrint(n.left, level+2, pos-(1*level+1), num);
+            if (n.right != null) myPrint(n.right, level+2, pos+(1*level+1), num);
         }
     }
 
