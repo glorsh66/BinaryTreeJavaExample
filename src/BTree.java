@@ -252,4 +252,33 @@ public class BTree {
 
 
 
+    public void myPrintMnogoLiniy(Node n, int level, int pos, String[][] num, int max_level)
+    {
+        if (n!=null) {
+
+            int start_pos=0;
+
+            if (level!=0) {
+                for (int i = 0; i < level; i++) {
+                    start_pos += max_level-level+1+i+1;
+                }
+            }
+            System.out.println(n.i + " level: " + level + " pos: " + pos + " start pos: " + start_pos);
+
+            //Пишем в массив.
+            num[start_pos][pos] = Integer.toString(n.i);
+
+            //Делаем стрелочки
+
+            for (int i =0; i<max_level-level; i++) {
+                if (n.left != null) num[start_pos+i+1][pos - (1 +i)] = "/";
+                if (n.right != null) num[start_pos+i+1][pos + (1 +i)] = "\\";
+            }
+
+            if (n.left != null) myPrintMnogoLiniy(n.left, level+1, pos-(1*level+1+level+max_level-level), num,max_level);
+            if (n.right != null) myPrintMnogoLiniy(n.right, level+1, pos+(1*level+1+level+max_level-level), num,max_level);
+        }
+    }
+
+
 }

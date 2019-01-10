@@ -4,38 +4,29 @@ import java.util.ArrayList;
 public class main {
     public static void main(String[] args) {
         BTree t = new BTree();
+        t.add(new Node(5));
+        t.add(new Node(9));
+        t.add(new Node(2));
+        t.add(new Node(3));
+
+        t.add(new Node(7));
+        t.add(new Node(1));
         t.add(new Node(8));
-        t.add(new Node(4));
-        t.add(new Node(12));
-        t.add(new Node(13));
 
 
-//        t.add(new Node(2));
-//        t.add(new Node(6));
-//        t.add(new Node(10));
-//        t.add(new Node(14));
-//        t.add(new Node(1));
-//        t.add(new Node(3));
-//        t.add(new Node(5));
-//        t.add(new Node(7));
-//        t.add(new Node(9));
-//        t.add(new Node(11));
+
+
+
+//
+//
+//
+//
+//        t.add(new Node(12));
 //        t.add(new Node(13));
+//        t.add(new Node(14));
 //        t.add(new Node(15));
 
 
-
-
-
-
-//
-//        t.add(new Node(16));
-//        t.add(new Node(8));
-//        t.add(new Node(6));
-//
-//        t.add(new Node(11));
-//        t.add(new Node(12));
-//        t.add(new Node(13));
 
 
 
@@ -54,7 +45,7 @@ public class main {
 
 
         //Делаем массив
-        String[][] num = new String[tree_height*2+50][max_elemtns*2];
+        String[][] num = new String[tree_height*2+50][max_elemtns*2+60];
 
         //Заполняем массив пробелами
         for (int i =0; i<num.length;i++)
@@ -66,7 +57,7 @@ public class main {
         }
 
 
-        t.myPrint(t.root,0,(int)(max_elemtns*2)/2+1,num);
+        t.myPrintMnogoLiniy(t.root,0,20,num,tree_height);
 
 
         System.out.println("Печатаем массив");
